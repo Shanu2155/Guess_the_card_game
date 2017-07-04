@@ -12,6 +12,10 @@ def set_speed():
 	r1.destroy()
 	r2.destroy()
 	r3.destroy()
+	bl1.grid(row = 1, column = 0, padx = 10, pady = 10)
+	bl2.grid(row = 1, column = 1, padx = 10, pady = 10)
+	bl3.grid(row = 1, column = 2, padx = 10, pady = 10)
+	func()
 
 
 def show(num):
@@ -28,22 +32,22 @@ def show(num):
 		joker2.config(image = joker_img)
 		ace.config(image = joker_img)
 		
-	txtlb = Label(root, text="3", bg="black", fg="red", font=("Times", 36))
-	txtlb.grid(row=3, column=1, padx=10, pady=25)
+	text_label = Label(root, text="3", bg="black", fg="red", font=("Times", 36))
+	text_label.grid(row=3, column=1, padx=10, pady=25)
 	root.update()
 	time.sleep(1)
-	txtlb.config(text="2", font=("Times", 32), fg="yellow")
+	text_label.config(text="2", font=("Times", 32), fg="yellow")
 	root.update()
 	time.sleep(1)
-	txtlb.config(text = "1", font=("Times", 26), fg="green")
+	text_label.config(text = "1", font=("Times", 26), fg="green")
 	root.update()
 	time.sleep(1)
-	txtlb.config(text = "START", font=("Times", 28), fg="green")
+	text_label.config(text = "START", font=("Times", 28), fg="blue")
 	root.update()
 	joker1.config(image=back_img)
 	joker2.config(image=back_img)
 	ace.config(image=back_img)
-	txtlb.destroy()
+	text_label.destroy()
 	time.sleep(1)
 	root.update()
 
@@ -180,7 +184,8 @@ def answer(num):
 	
 def func():
 	show(123)
-	for i in range(0, 20):
+	c = random.randint(6, 20)
+	for i in range(0, c):
 		r = random.randint(0, 2)
 		if r == 0:
 			func12()
@@ -193,37 +198,46 @@ def func():
 def check1():
 	global val
 	if val == 1:
-		label.config(text="YOU WON!!!", fg="yellow")
+		label.config(text="YOU WON!!!", fg="yellow", font=("Times", 32))
 	else:
-		label.config(text = "YOU LOST!!!", fg="red")
+		label.config(text = "YOU LOST!!!", fg="red", font=("Times", 32))
 	answer(val)
+	bl1.destroy()
+	bl2.destroy()
+	bl3.destroy()
 	
 	
 def check2():
 	global val
 	if val == 2:
-		label.config(text="YOU WON!!!", fg="yellow")
+		label.config(text="YOU WON!!!", fg="yellow", font=("Times", 32))
 	else:
-		label.config(text = "YOU LOST!!!", fg="red")
+		label.config(text = "YOU LOST!!!", fg="red", font=("Times", 32))
 	answer(val)
+	bl1.destroy()
+	bl2.destroy()
+	bl3.destroy()
 	
 	
 def check3():
 	global val
 	if val == 3:
-		label.config(text="YOU WON!!!", fg="yellow")
+		label.config(text="YOU WON!!!", fg="yellow", font=("Times", 32))
 	else:
-		label.config(text = "YOU LOST!!!", fg="red")
+		label.config(text = "YOU LOST!!!", fg="red", font=("Times", 32))
 	answer(val)
+	bl1.destroy()
+	bl2.destroy()
+	bl3.destroy()
 	
 
 root = Tk()
 root.config(bg="black")
 my_speed = DoubleVar()
-label = Label(root, text = "IDENTIFY WHERE THE ACE CARD IS!!!", fg="white", bg="black")
-r1 = Radiobutton(root, text="Easy", value=0.3, variable=my_speed, command=set_speed, fg="white", bg="black")
-r2 = Radiobutton(root, text="Medium", value=0.2, variable=my_speed, command=set_speed, fg="white", bg="black")
-r3 = Radiobutton(root, text="Hard", value=0.1, variable=my_speed, command=set_speed, fg="white", bg="black")
+label = Label(root, text = "IDENTIFY WHERE THE ACE CARD IS!!!", fg="purple", bg="black", font=("Times", 18))
+r1 = Radiobutton(root, text="Easy", value=0.3, variable=my_speed, command=set_speed, fg="white", bg="black", font=("Times", 14))
+r2 = Radiobutton(root, text="Medium", value=0.2, variable=my_speed, command=set_speed, fg="white", bg="black", font=("Times", 14))
+r3 = Radiobutton(root, text="Hard", value=0.1, variable=my_speed, command=set_speed, fg="white", bg="black", font=("Times", 14))
 r1.grid(row=1, column=0)
 r2.grid(row=1, column=1)
 r3.grid(row=1, column=2)
@@ -260,12 +274,13 @@ l2.grid(row = 3, column = 1, padx = 25, pady=10)
 # l3.photo = black_img
 l3.grid(row = 3, column = 2, padx = 25, pady=10)
 
-bl1 = Button(root, text="1st CARD", fg="white", bg="black", command=check1).grid(row=4, column=0, padx=10, pady=10)
-bl2 = Button(root, text="2nd CARD", fg="white", bg="black", command=check2).grid(row=4, column=1, padx=10, pady=10)
-bl3 = Button(root, text="3rd CARD", fg="white", bg="black", command=check3).grid(row=4, column=2, padx=10, pady=10)
+bl1 = Button(root, text="1st CARD", fg="white", bg="black", command=check1, font=("Times", 12))
+bl2 = Button(root, text="2nd CARD", fg="white", bg="black", command=check2, font=("Times", 12))
+bl3 = Button(root, text="3rd CARD", fg="white", bg="black", command=check3, font=("Times", 12))
 
-b1 = Button(root, text="START", command=func, fg="white", bg="black")
-b1.grid(row=5, column=1, padx=10, pady=10)
+
+# b1 = Button(root, text="START", command=func, fg="white", bg="black")
+# b1.grid(row=4, column=1, padx=10, pady=10)
 
 root.mainloop()
 
