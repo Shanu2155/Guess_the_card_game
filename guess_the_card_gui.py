@@ -27,14 +27,23 @@ def show(num):
 		joker1.config(image = ace_img)
 		joker2.config(image = joker_img)
 		ace.config(image = joker_img)
-	
-	time.sleep(3)
+		
+	txtlb = Label(root, text="3", bg="black", fg="red", font=("Times", 36))
+	txtlb.grid(row=3, column=1, padx=10, pady=25)
 	root.update()
-	
+	time.sleep(1)
+	txtlb.config(text="2", font=("Times", 32), fg="yellow")
+	root.update()
+	time.sleep(1)
+	txtlb.config(text = "1", font=("Times", 26), fg="green")
+	root.update()
+	time.sleep(1)
+	txtlb.config(text = "START", font=("Times", 28), fg="green")
+	root.update()
 	joker1.config(image=back_img)
 	joker2.config(image=back_img)
 	ace.config(image=back_img)
-	
+	txtlb.destroy()
 	time.sleep(1)
 	root.update()
 
@@ -179,11 +188,6 @@ def func():
 			func23()
 		else:
 			func13()
-		
-
-def ans():
-	global val
-	answer(val)
 
 
 def check1():
@@ -192,7 +196,7 @@ def check1():
 		label.config(text="YOU WON!!!", fg="yellow")
 	else:
 		label.config(text = "YOU LOST!!!", fg="red")
-	ans()
+	answer(val)
 	
 	
 def check2():
@@ -201,7 +205,7 @@ def check2():
 		label.config(text="YOU WON!!!", fg="yellow")
 	else:
 		label.config(text = "YOU LOST!!!", fg="red")
-	ans()
+	answer(val)
 	
 	
 def check3():
@@ -210,7 +214,7 @@ def check3():
 		label.config(text="YOU WON!!!", fg="yellow")
 	else:
 		label.config(text = "YOU LOST!!!", fg="red")
-	ans()
+	answer(val)
 	
 
 root = Tk()
@@ -238,7 +242,6 @@ l3 = Label(root, image = black_img, fg="white", bg="black", width = 100, height 
 
 label.grid(row = 0, columnspan = 3, padx=5, pady=5)
 
-
 # joker1.photo = back_img
 joker1.grid(row = 2, column = 0, padx = 25, pady=10)
 
@@ -261,11 +264,8 @@ bl1 = Button(root, text="1st CARD", fg="white", bg="black", command=check1).grid
 bl2 = Button(root, text="2nd CARD", fg="white", bg="black", command=check2).grid(row=4, column=1, padx=10, pady=10)
 bl3 = Button(root, text="3rd CARD", fg="white", bg="black", command=check3).grid(row=4, column=2, padx=10, pady=10)
 
-b1 = Button(root, text="START", command=func,fg="white", bg="black")
+b1 = Button(root, text="START", command=func, fg="white", bg="black")
 b1.grid(row=5, column=1, padx=10, pady=10)
-
-b2 = Button(root, text="ANSWER", command=ans, fg="white", bg="black")
-b2.grid(row=5, column=2, padx=10, pady=10)
 
 root.mainloop()
 
